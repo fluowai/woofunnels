@@ -1,0 +1,9 @@
+{
+  "name": "Woofunnels",
+  "description": "All-in-one SaaS platform for CRM, Marketing Automation, Funnels, and Sales Pipelines.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
