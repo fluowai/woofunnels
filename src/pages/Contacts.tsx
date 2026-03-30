@@ -25,35 +25,35 @@ import { Contact, Interaction, Company } from '@/src/types';
 
 const companies: Company[] = [
   { id: 'c1', name: 'TechFlow Solutions', website: 'techflow.io', industry: 'Software' },
-  { id: 'c2', name: 'Global Agency', website: 'globalagency.com', industry: 'Marketing' },
+  { id: 'c2', name: 'Agência Global', website: 'agenciaglobal.com.br', industry: 'Marketing' },
 ];
 
 const contacts: Contact[] = [
   { 
     id: '1', 
-    name: 'Sarah Jenkins', 
-    email: 'sarah@example.com', 
-    phone: '+1 (555) 123-4567', 
+    name: 'Sara Oliveira', 
+    email: 'sara@exemplo.com.br', 
+    phone: '(11) 98765-4321', 
     companyId: 'c1',
-    tags: ['Lead', 'Hot'], 
+    tags: ['Lead', 'Quente'], 
     status: 'lead', 
-    lastInteraction: '2 mins ago',
+    lastInteraction: '2 min atrás',
     interactions: [
-      { id: 'i1', type: 'email', content: 'Sent pricing proposal', timestamp: '2026-03-30T10:00:00Z', status: 'sent' },
-      { id: 'i2', type: 'call', content: 'Discovery call - very interested in Agency plan', timestamp: '2026-03-29T15:30:00Z', status: 'completed' },
+      { id: 'i1', type: 'email', content: 'Enviou proposta de preço', timestamp: '2026-03-30T10:00:00Z', status: 'sent' },
+      { id: 'i2', type: 'call', content: 'Chamada de descoberta - muito interessado no plano Agência', timestamp: '2026-03-29T15:30:00Z', status: 'completed' },
     ]
   },
   { 
     id: '2', 
-    name: 'Michael Chen', 
-    email: 'm.chen@company.com', 
-    phone: '+1 (555) 987-6543', 
+    name: 'Miguel Santos', 
+    email: 'm.santos@empresa.com.br', 
+    phone: '(21) 91234-5678', 
     companyId: 'c2',
-    tags: ['Customer'], 
+    tags: ['Cliente'], 
     status: 'customer', 
-    lastInteraction: '15 mins ago',
+    lastInteraction: '15 min atrás',
     interactions: [
-      { id: 'i3', type: 'whatsapp', content: 'Asked about API integration', timestamp: '2026-03-30T09:15:00Z', status: 'received' },
+      { id: 'i3', type: 'whatsapp', content: 'Perguntou sobre integração de API', timestamp: '2026-03-30T09:15:00Z', status: 'received' },
     ]
   },
 ];
@@ -80,37 +80,37 @@ export default function Contacts() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Contacts CRM</h1>
-          <p className="text-slate-500 text-sm mt-1">Manage your customer relationships and data.</p>
+          <h1 className="text-2xl font-bold text-slate-900">CRM de Contatos</h1>
+          <p className="text-slate-500 text-sm mt-1">Gerencie seus relacionamentos e dados de clientes.</p>
         </div>
         <div className="flex gap-3">
           <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
             <Download className="w-4 h-4" />
-            Export
+            Exportar
           </button>
           <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
             <Plus className="w-4 h-4" />
-            Add Contact
+            Adicionar Contato
           </button>
         </div>
       </div>
 
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
-          <div className="flex items-center gap-4 flex-1">
+        <div className="p-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between bg-slate-50/50 gap-4">
+          <div className="flex flex-wrap items-center gap-4 flex-1">
             <div className="relative max-w-xs w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input 
                 type="text" 
-                placeholder="Search contacts..." 
+                placeholder="Buscar contatos..." 
                 className="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
             <button className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-white hover:shadow-sm rounded-lg transition-all border border-transparent hover:border-slate-200">
               <Filter className="w-4 h-4" />
-              Filters
+              Filtros
             </button>
             <button className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-white hover:shadow-sm rounded-lg transition-all border border-transparent hover:border-slate-200">
               <Tag className="w-4 h-4" />
@@ -120,9 +120,9 @@ export default function Contacts() {
           
           {selectedContacts.length > 0 && (
             <div className="flex items-center gap-2 animate-in fade-in slide-in-from-right-4 duration-200">
-              <span className="text-sm font-medium text-indigo-600 mr-2">{selectedContacts.length} selected</span>
-              <button className="px-3 py-1.5 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-md hover:bg-indigo-100 transition-colors">Bulk Action</button>
-              <button className="px-3 py-1.5 bg-rose-50 text-rose-700 text-xs font-bold rounded-md hover:bg-rose-100 transition-colors">Delete</button>
+              <span className="text-sm font-medium text-indigo-600 mr-2">{selectedContacts.length} selecionados</span>
+              <button className="px-3 py-1.5 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-md hover:bg-indigo-100 transition-colors">Ação em Massa</button>
+              <button className="px-3 py-1.5 bg-rose-50 text-rose-700 text-xs font-bold rounded-md hover:bg-rose-100 transition-colors">Excluir</button>
             </div>
           )}
         </div>
@@ -139,12 +139,12 @@ export default function Contacts() {
                     onChange={toggleSelectAll}
                   />
                 </th>
-                <th className="px-6 py-4">Name & Company</th>
-                <th className="px-6 py-4">Contact Info</th>
+                <th className="px-6 py-4">Nome e Empresa</th>
+                <th className="px-6 py-4">Informações de Contato</th>
                 <th className="px-6 py-4">Tags</th>
                 <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4">Last Activity</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-6 py-4">Última Atividade</th>
+                <th className="px-6 py-4 text-right">Ações</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -176,7 +176,7 @@ export default function Contacts() {
                           <p className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{contact.name}</p>
                           <p className="text-xs text-slate-500 flex items-center gap-1">
                             <Building2 className="w-3 h-3" />
-                            {company?.name || 'No Company'}
+                            {company?.name || 'Sem Empresa'}
                           </p>
                         </div>
                       </div>
@@ -208,7 +208,9 @@ export default function Contacts() {
                           "w-1.5 h-1.5 rounded-full",
                           contact.status === 'customer' ? "bg-emerald-500" : "bg-amber-500"
                         )} />
-                        <span className="text-xs font-medium text-slate-700 capitalize">{contact.status}</span>
+                        <span className="text-xs font-medium text-slate-700 capitalize">
+                          {contact.status === 'customer' ? 'cliente' : 'lead'}
+                        </span>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-xs text-slate-500">{contact.lastInteraction}</td>
@@ -224,9 +226,9 @@ export default function Contacts() {
           </table>
         </div>
         
-        <div className="p-4 border-t border-slate-100 flex items-center justify-between bg-slate-50/30">
-          <p className="text-xs text-slate-500 font-medium">Showing 1 to 2 of 1,240 contacts</p>
-          <div className="flex items-center gap-2">
+        <div className="p-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between bg-slate-50/30 gap-4">
+          <p className="text-xs text-slate-500 font-medium text-center sm:text-left">Mostrando 1 a 2 de 1.240 contatos</p>
+          <div className="flex items-center justify-center gap-2">
             <button className="p-2 border border-slate-200 rounded-lg hover:bg-white disabled:opacity-50 transition-all" disabled>
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -256,7 +258,7 @@ export default function Contacts() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-slate-900">{viewingContact.name}</h2>
-                  <p className="text-sm text-slate-500">Contact Details</p>
+                  <p className="text-sm text-slate-500">Detalhes do Contato</p>
                 </div>
               </div>
               <button onClick={() => setViewingContact(null)} className="p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-400">
@@ -266,13 +268,13 @@ export default function Contacts() {
 
             <div className="flex-1 overflow-y-auto p-6 space-y-8">
               {/* Quick Info */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">E-mail</p>
                   <p className="text-sm font-bold text-slate-900">{viewingContact.email}</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Phone</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Telefone</p>
                   <p className="text-sm font-bold text-slate-900">{viewingContact.phone}</p>
                 </div>
               </div>
@@ -281,7 +283,7 @@ export default function Contacts() {
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-indigo-600" />
-                  Company Association
+                  Associação de Empresa
                 </h3>
                 {viewingContact.companyId ? (
                   <div className="p-4 rounded-2xl border border-slate-200 flex items-center justify-between group hover:border-indigo-200 transition-colors">
@@ -300,7 +302,7 @@ export default function Contacts() {
                   </div>
                 ) : (
                   <button className="w-full py-4 border-2 border-dashed border-slate-200 rounded-2xl text-slate-400 text-sm font-medium hover:border-indigo-300 hover:text-indigo-600 transition-all">
-                    + Associate with Company
+                    + Associar a uma Empresa
                   </button>
                 )}
               </div>
@@ -309,7 +311,7 @@ export default function Contacts() {
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                   <History className="w-4 h-4 text-indigo-600" />
-                  Interaction History
+                  Histórico de Interações
                 </h3>
                 <div className="space-y-4">
                   {viewingContact.interactions.map((interaction, idx) => (
@@ -327,7 +329,7 @@ export default function Contacts() {
                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{interaction.type}</span>
                           <span className="text-[10px] text-slate-400 flex items-center gap-1">
                             <Clock className="w-3 h-3" />
-                            {new Date(interaction.timestamp).toLocaleString()}
+                            {new Date(interaction.timestamp).toLocaleString('pt-BR')}
                           </span>
                         </div>
                         <p className="text-sm text-slate-700">{interaction.content}</p>
@@ -338,12 +340,12 @@ export default function Contacts() {
               </div>
             </div>
 
-            <div className="p-6 border-t border-slate-100 bg-slate-50 flex gap-3">
+            <div className="p-6 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row gap-3">
               <button className="flex-1 py-3 bg-indigo-600 text-white rounded-xl font-bold text-sm shadow-lg hover:bg-indigo-700 transition-colors">
-                Send Message
+                Enviar Mensagem
               </button>
               <button className="flex-1 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold text-sm hover:bg-slate-100 transition-colors">
-                Edit Contact
+                Editar Contato
               </button>
             </div>
           </div>

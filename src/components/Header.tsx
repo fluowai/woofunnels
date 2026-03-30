@@ -1,48 +1,58 @@
 import React, { useState } from 'react';
-import { Search, Bell, HelpCircle, Plus, X, Users, Mail, Globe, Calendar as CalendarIcon } from 'lucide-react';
+import { Search, Bell, HelpCircle, Plus, X, Users, Mail, Globe, Calendar as CalendarIcon, Menu } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 
-export default function Header() {
+interface HeaderProps {
+  onMenuOpen: () => void;
+}
+
+export default function Header({ onMenuOpen }: HeaderProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const actions = [
-    { label: 'Add Contact', icon: Users, color: 'bg-blue-500' },
-    { label: 'Create Funnel', icon: Globe, color: 'bg-indigo-500' },
-    { label: 'Send Email', icon: Mail, color: 'bg-emerald-500' },
-    { label: 'Book Appointment', icon: CalendarIcon, color: 'bg-amber-500' },
+    { label: 'Adicionar Contato', icon: Users, color: 'bg-blue-500' },
+    { label: 'Criar Funil', icon: Globe, color: 'bg-indigo-500' },
+    { label: 'Enviar E-mail', icon: Mail, color: 'bg-emerald-500' },
+    { label: 'Agendar Horário', icon: CalendarIcon, color: 'bg-amber-500' },
   ];
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-10">
+    <header className="h-16 bg-white border-b border-slate-200 px-4 md:px-8 flex items-center justify-between sticky top-0 z-30">
       <div className="flex items-center gap-4 flex-1 max-w-xl">
-        <div className="relative w-full">
+        <button 
+          onClick={onMenuOpen}
+          className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg md:hidden"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+        <div className="relative w-full hidden sm:block">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input 
             type="text" 
-            placeholder="Quick search..." 
+            placeholder="Busca rápida..." 
             className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
           />
         </div>
       </div>
       
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors shadow-sm"
         >
           <Plus className="w-4 h-4" />
-          Quick Action
+          <span className="hidden xs:inline">Ação Rápida</span>
         </button>
         
-        <div className="h-6 w-px bg-slate-200 mx-2" />
+        <div className="h-6 w-px bg-slate-200 mx-1 md:mx-2" />
         
         <button className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors relative">
           <Bell className="w-5 h-5" />
           <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
         </button>
         
-        <button className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+        <button className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors hidden sm:block">
           <HelpCircle className="w-5 h-5" />
         </button>
       </div>
@@ -64,7 +74,7 @@ export default function Header() {
               className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden"
             >
               <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-                <h3 className="text-xl font-bold text-slate-900">Quick Actions</h3>
+                <h3 className="text-xl font-bold text-slate-900">Ações Rápidas</h3>
                 <button 
                   onClick={() => setIsModalOpen(false)}
                   className="p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-400"
@@ -90,7 +100,7 @@ export default function Header() {
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-lg hover:bg-slate-100 transition-colors"
                 >
-                  Cancel
+                  Cancelar
                 </button>
               </div>
             </motion.div>

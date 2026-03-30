@@ -15,11 +15,11 @@ import {
 import { cn } from '@/src/lib/utils';
 
 const campaigns = [
-  { id: 1, name: 'Welcome Sequence v2', type: 'email', status: 'Active', sent: '1,240', openRate: '42.5%', clickRate: '12.1%', lastActivity: '2 mins ago' },
-  { id: 2, name: 'Flash Sale SMS', type: 'sms', status: 'Draft', sent: '0', openRate: '0%', clickRate: '0%', lastActivity: '15 mins ago' },
-  { id: 3, name: 'Re-engagement Campaign', type: 'email', status: 'Active', sent: '45,672', openRate: '18.2%', clickRate: '3.4%', lastActivity: '1 hour ago' },
-  { id: 4, name: 'Webinar Reminder', type: 'email', status: 'Scheduled', sent: '0', openRate: '0%', clickRate: '0%', lastActivity: '3 hours ago' },
-  { id: 5, name: 'Abandoned Cart SMS', type: 'sms', status: 'Active', sent: '842', openRate: '92.1%', clickRate: '24.5%', lastActivity: 'Yesterday' },
+  { id: 1, name: 'Sequência de Boas-vindas v2', type: 'email', status: 'Ativa', sent: '1.240', openRate: '42.5%', clickRate: '12.1%', lastActivity: '2 mins atrás' },
+  { id: 2, name: 'SMS de Promoção Relâmpago', type: 'sms', status: 'Rascunho', sent: '0', openRate: '0%', clickRate: '0%', lastActivity: '15 mins atrás' },
+  { id: 3, name: 'Campanha de Reengajamento', type: 'email', status: 'Ativa', sent: '45.672', openRate: '18.2%', clickRate: '3.4%', lastActivity: '1 hora atrás' },
+  { id: 4, name: 'Lembrete de Webinar', type: 'email', status: 'Agendada', sent: '0', openRate: '0%', clickRate: '0%', lastActivity: '3 horas atrás' },
+  { id: 5, name: 'SMS de Carrinho Abandonado', type: 'sms', status: 'Ativa', sent: '842', openRate: '92.1%', clickRate: '24.5%', lastActivity: 'Ontem' },
 ];
 
 export default function Marketing() {
@@ -27,14 +27,14 @@ export default function Marketing() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Marketing Campaigns</h1>
-          <p className="text-slate-500 text-sm mt-1">Create and manage your omnichannel marketing efforts.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Campanhas de Marketing</h1>
+          <p className="text-slate-500 text-sm mt-1">Crie e gerencie seus esforços de marketing omnichannel.</p>
         </div>
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
+        <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center justify-center gap-2">
           <Plus className="w-4 h-4" />
-          Create Campaign
+          Criar Campanha
         </button>
       </div>
 
@@ -44,11 +44,11 @@ export default function Marketing() {
             <div className="p-2 bg-indigo-50 rounded-lg">
               <Mail className="w-5 h-5 text-indigo-600" />
             </div>
-            <h3 className="font-bold text-slate-900">Email Marketing</h3>
+            <h3 className="font-bold text-slate-900">E-mail Marketing</h3>
           </div>
-          <p className="text-sm text-slate-500 mb-6">Build beautiful emails with our drag-and-drop editor.</p>
+          <p className="text-sm text-slate-500 mb-6">Crie e-mails incríveis com nosso editor de arrastar e soltar.</p>
           <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
-            <span>Active Sequences</span>
+            <span>Sequências Ativas</span>
             <span className="text-slate-900">12</span>
           </div>
         </div>
@@ -58,11 +58,11 @@ export default function Marketing() {
             <div className="p-2 bg-emerald-50 rounded-lg">
               <Smartphone className="w-5 h-5 text-emerald-600" />
             </div>
-            <h3 className="font-bold text-slate-900">SMS Marketing</h3>
+            <h3 className="font-bold text-slate-900">Marketing por SMS</h3>
           </div>
-          <p className="text-sm text-slate-500 mb-6">Reach your customers directly on their mobile devices.</p>
+          <p className="text-sm text-slate-500 mb-6">Alcance seus clientes diretamente em seus dispositivos móveis.</p>
           <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
-            <span>Active Campaigns</span>
+            <span>Campanhas Ativas</span>
             <span className="text-slate-900">4</span>
           </div>
         </div>
@@ -72,30 +72,30 @@ export default function Marketing() {
             <div className="p-2 bg-amber-50 rounded-lg">
               <BarChart2 className="w-5 h-5 text-amber-600" />
             </div>
-            <h3 className="font-bold text-slate-900">Analytics</h3>
+            <h3 className="font-bold text-slate-900">Análise</h3>
           </div>
-          <p className="text-sm text-slate-500 mb-6">Track performance across all your marketing channels.</p>
+          <p className="text-sm text-slate-500 mb-6">Acompanhe o desempenho em todos os seus canais de marketing.</p>
           <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
-            <span>Avg. Open Rate</span>
+            <span>Taxa de Abertura Média</span>
             <span className="text-slate-900">28.4%</span>
           </div>
         </div>
       </div>
 
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+        <div className="p-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between bg-slate-50/50 gap-4">
           <div className="flex items-center gap-4 flex-1">
             <div className="relative max-w-xs w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input 
                 type="text" 
-                placeholder="Search campaigns..." 
+                placeholder="Buscar campanhas..." 
                 className="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
             <button className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-white hover:shadow-sm rounded-lg transition-all border border-transparent hover:border-slate-200">
               <Filter className="w-4 h-4" />
-              Filters
+              Filtros
             </button>
           </div>
         </div>
@@ -104,13 +104,13 @@ export default function Marketing() {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50/50 text-slate-500 text-xs font-semibold uppercase tracking-wider border-b border-slate-100">
-                <th className="px-6 py-4">Campaign Name</th>
+                <th className="px-6 py-4">Nome da Campanha</th>
                 <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4">Sent</th>
-                <th className="px-6 py-4">Open Rate</th>
-                <th className="px-6 py-4">Click Rate</th>
-                <th className="px-6 py-4">Last Activity</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-6 py-4">Enviado</th>
+                <th className="px-6 py-4">Taxa de Abertura</th>
+                <th className="px-6 py-4">Taxa de Cliques</th>
+                <th className="px-6 py-4">Última Atividade</th>
+                <th className="px-6 py-4 text-right">Ações</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -132,13 +132,13 @@ export default function Marketing() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-1.5">
-                      {campaign.status === 'Active' && <CheckCircle2 className="w-3 h-3 text-emerald-500" />}
-                      {campaign.status === 'Scheduled' && <Clock className="w-3 h-3 text-indigo-500" />}
-                      {campaign.status === 'Draft' && <AlertCircle className="w-3 h-3 text-slate-400" />}
+                      {campaign.status === 'Ativa' && <CheckCircle2 className="w-3 h-3 text-emerald-500" />}
+                      {campaign.status === 'Agendada' && <Clock className="w-3 h-3 text-indigo-500" />}
+                      {campaign.status === 'Rascunho' && <AlertCircle className="w-3 h-3 text-slate-400" />}
                       <span className={cn(
                         "text-xs font-medium",
-                        campaign.status === 'Active' ? "text-emerald-700" :
-                        campaign.status === 'Scheduled' ? "text-indigo-700" :
+                        campaign.status === 'Ativa' ? "text-emerald-700" :
+                        campaign.status === 'Agendada' ? "text-indigo-700" :
                         "text-slate-500"
                       )}>
                         {campaign.status}

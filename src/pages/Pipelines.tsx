@@ -7,36 +7,36 @@ const initialData = {
   columns: {
     'col-1': {
       id: 'col-1',
-      title: 'New Lead',
+      title: 'Novo Lead',
       items: [
-        { id: 'item-1', name: 'Sarah Jenkins', company: 'Sarah Design', value: '$2,400' },
-        { id: 'item-2', name: 'Michael Chen', company: 'Chen Tech', value: '$1,200' },
+        { id: 'item-1', name: 'Sara Oliveira', company: 'Sara Design', value: 'R$ 2.400' },
+        { id: 'item-2', name: 'Miguel Santos', company: 'Miguel Tech', value: 'R$ 1.200' },
       ],
     },
     'col-2': {
       id: 'col-2',
-      title: 'Contacted',
+      title: 'Contatado',
       items: [
-        { id: 'item-3', name: 'Emma Wilson', company: 'Wilson & Co', value: '$3,500' },
+        { id: 'item-3', name: 'Emília Silva', company: 'Emília & Co', value: 'R$ 3.500' },
       ],
     },
     'col-3': {
       id: 'col-3',
-      title: 'Proposal Sent',
+      title: 'Proposta Enviada',
       items: [
-        { id: 'item-4', name: 'David Miller', company: 'Miller Agency', value: '$5,000' },
+        { id: 'item-4', name: 'Davi Mendes', company: 'Agência Mendes', value: 'R$ 5.000' },
       ],
     },
     'col-4': {
       id: 'col-4',
-      title: 'Negotiation',
+      title: 'Negociação',
       items: [],
     },
     'col-5': {
       id: 'col-5',
-      title: 'Closed Won',
+      title: 'Fechado (Ganho)',
       items: [
-        { id: 'item-5', name: 'Alice Brown', company: 'Alice Corp', value: '$10,000' },
+        { id: 'item-5', name: 'Alice Costa', company: 'Alice Corp', value: 'R$ 10.000' },
       ],
     },
   },
@@ -108,27 +108,27 @@ export default function Pipelines() {
 
   return (
     <div className="h-full flex flex-col space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Sales Pipeline</h1>
-          <p className="text-slate-500 text-sm mt-1">Manage your deals and track progress.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Pipeline de Vendas</h1>
+          <p className="text-slate-500 text-sm mt-1">Gerencie seus negócios e acompanhe o progresso.</p>
         </div>
-        <div className="flex gap-3">
-          <div className="relative">
+        <div className="flex flex-wrap gap-3">
+          <div className="relative flex-1 md:flex-none">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input 
               type="text" 
-              placeholder="Search deals..." 
-              className="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              placeholder="Buscar negócios..." 
+              className="w-full md:w-auto pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
           <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
             <Filter className="w-4 h-4" />
-            Filters
+            Filtros
           </button>
           <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
             <Plus className="w-4 h-4" />
-            New Deal
+            Novo Negócio
           </button>
         </div>
       </div>
@@ -189,7 +189,7 @@ export default function Pipelines() {
                                   </span>
                                   <div className="flex -space-x-2">
                                     <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[8px] font-bold">
-                                      JD
+                                      {item.name.split(' ').map(n => n[0]).join('')}
                                     </div>
                                   </div>
                                 </div>
@@ -204,7 +204,7 @@ export default function Pipelines() {
                   
                   <button className="mt-4 w-full py-2 border border-dashed border-slate-300 rounded-lg text-slate-500 text-xs font-medium hover:bg-white hover:border-slate-400 transition-all flex items-center justify-center gap-2">
                     <Plus className="w-3 h-3" />
-                    Add Deal
+                    Adicionar Negócio
                   </button>
                 </div>
               );

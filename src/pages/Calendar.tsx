@@ -13,12 +13,13 @@ import {
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, isSameMonth, isSameDay, addDays, eachDayOfInterval } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 const events = [
-  { id: 1, title: 'Strategy Session', time: '10:00 AM', duration: '45m', type: 'video', contact: 'Sarah Jenkins', date: new Date() },
-  { id: 2, title: 'Sales Demo', time: '02:30 PM', duration: '1h', type: 'video', contact: 'Michael Chen', date: new Date() },
-  { id: 3, title: 'Onboarding Call', time: '11:00 AM', duration: '30m', type: 'phone', contact: 'Emma Wilson', date: addDays(new Date(), 1) },
-  { id: 4, title: 'Partnership Meeting', time: '09:00 AM', duration: '1h', type: 'in-person', contact: 'David Miller', date: addDays(new Date(), 2) },
+  { id: 1, title: 'Sessão de Estratégia', time: '10:00 AM', duration: '45m', type: 'video', contact: 'Sarah Jenkins', date: new Date() },
+  { id: 2, title: 'Demonstração de Vendas', time: '02:30 PM', duration: '1h', type: 'video', contact: 'Michael Chen', date: new Date() },
+  { id: 3, title: 'Chamada de Onboarding', time: '11:00 AM', duration: '30m', type: 'phone', contact: 'Emma Wilson', date: addDays(new Date(), 1) },
+  { id: 4, title: 'Reunião de Parceria', time: '09:00 AM', duration: '1h', type: 'in-person', contact: 'David Miller', date: addDays(new Date(), 2) },
 ];
 
 export default function Calendar() {
@@ -30,18 +31,18 @@ export default function Calendar() {
 
   const renderHeader = () => {
     return (
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Calendar & Appointments</h1>
-          <p className="text-slate-500 text-sm mt-1">Manage your schedule and client meetings.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Calendário e Agendamentos</h1>
+          <p className="text-slate-500 text-sm mt-1">Gerencie sua agenda e reuniões com clientes.</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center bg-white border border-slate-200 rounded-lg p-1 shadow-sm">
             <button onClick={prevMonth} className="p-1.5 hover:bg-slate-50 rounded-md transition-colors">
               <ChevronLeft className="w-4 h-4 text-slate-600" />
             </button>
-            <span className="px-4 text-sm font-bold text-slate-900 min-w-[140px] text-center">
-              {format(currentMonth, 'MMMM yyyy')}
+            <span className="px-4 text-sm font-bold text-slate-900 min-w-[140px] text-center capitalize">
+              {format(currentMonth, 'MMMM yyyy', { locale: ptBR })}
             </span>
             <button onClick={nextMonth} className="p-1.5 hover:bg-slate-50 rounded-md transition-colors">
               <ChevronRight className="w-4 h-4 text-slate-600" />
@@ -49,11 +50,11 @@ export default function Calendar() {
           </div>
           <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
             <Filter className="w-4 h-4" />
-            Filters
+            Filtros
           </button>
           <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
             <Plus className="w-4 h-4" />
-            New Appointment
+            Novo Agendamento
           </button>
         </div>
       </div>
@@ -61,7 +62,7 @@ export default function Calendar() {
   };
 
   const renderDays = () => {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
     return (
       <div className="grid grid-cols-7 mb-2">
         {days.map((day) => (
@@ -152,9 +153,11 @@ export default function Calendar() {
       
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Calendar Grid */}
-        <div className="flex-1">
-          {renderDays()}
-          {renderCells()}
+        <div className="flex-1 overflow-x-auto">
+          <div className="min-w-[600px]">
+            {renderDays()}
+            {renderCells()}
+          </div>
         </div>
 
         {/* Sidebar / Upcoming */}
@@ -162,7 +165,7 @@ export default function Calendar() {
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
               <Clock className="w-4 h-4 text-indigo-600" />
-              Upcoming Today
+              Próximos Hoje
             </h3>
             <div className="space-y-4">
               {events
@@ -192,7 +195,7 @@ export default function Calendar() {
                     {event.type === 'video' && (
                       <button className="mt-3 w-full py-1.5 bg-indigo-50 text-indigo-700 text-[10px] font-bold rounded-lg hover:bg-indigo-100 transition-colors flex items-center justify-center gap-2">
                         <Video className="w-3 h-3" />
-                        Join Meeting
+                        Entrar na Reunião
                       </button>
                     )}
                   </div>
@@ -201,14 +204,14 @@ export default function Calendar() {
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-            <h3 className="font-bold text-slate-900 mb-4">Calendar Settings</h3>
+            <h3 className="font-bold text-slate-900 mb-4">Configurações do Calendário</h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between p-2 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
                     <CalendarIcon className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-medium text-slate-700">Google Calendar</span>
+                  <span className="text-xs font-medium text-slate-700">Google Agenda</span>
                 </div>
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               </div>
@@ -217,7 +220,7 @@ export default function Calendar() {
                   <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
                     <Video className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-medium text-slate-700">Zoom Integration</span>
+                  <span className="text-xs font-medium text-slate-700">Integração com Zoom</span>
                 </div>
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               </div>
@@ -226,7 +229,7 @@ export default function Calendar() {
                   <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600">
                     <MapPin className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-medium text-slate-700">Office Locations</span>
+                  <span className="text-xs font-medium text-slate-700">Locais de Escritório</span>
                 </div>
                 <ChevronRight className="w-3 h-3 text-slate-400" />
               </div>

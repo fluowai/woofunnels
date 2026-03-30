@@ -23,51 +23,51 @@ import {
 import { cn } from '@/src/lib/utils';
 
 const data = [
-  { name: 'Mon', value: 400 },
-  { name: 'Tue', value: 300 },
-  { name: 'Wed', value: 600 },
-  { name: 'Thu', value: 800 },
-  { name: 'Fri', value: 500 },
-  { name: 'Sat', value: 900 },
-  { name: 'Sun', value: 1100 },
+  { name: 'Seg', value: 400 },
+  { name: 'Ter', value: 300 },
+  { name: 'Qua', value: 600 },
+  { name: 'Qui', value: 800 },
+  { name: 'Sex', value: 500 },
+  { name: 'Sáb', value: 900 },
+  { name: 'Dom', value: 1100 },
 ];
 
 const conversionData = [
-  { name: 'Ads', value: 4500, color: '#6366f1' },
-  { name: 'Direct', value: 3200, color: '#818cf8' },
+  { name: 'Anúncios', value: 4500, color: '#6366f1' },
+  { name: 'Direto', value: 3200, color: '#818cf8' },
   { name: 'Social', value: 2100, color: '#a5b4fc' },
-  { name: 'Email', value: 1800, color: '#c7d2fe' },
+  { name: 'E-mail', value: 1800, color: '#c7d2fe' },
 ];
 
 const stats = [
-  { label: 'Total Leads', value: '12,450', change: '+12.5%', trend: 'up', icon: Users },
-  { label: 'Conversion Rate', value: '3.2%', change: '+2.1%', trend: 'up', icon: TrendingUp },
-  { label: 'Ad Clicks', value: '45,672', change: '-4.3%', trend: 'down', icon: MousePointer2 },
-  { label: 'Revenue', value: '$84,200', change: '+18.2%', trend: 'up', icon: DollarSign },
+  { label: 'Total de Leads', value: '12.450', change: '+12.5%', trend: 'up', icon: Users },
+  { label: 'Taxa de Conversão', value: '3.2%', change: '+2.1%', trend: 'up', icon: TrendingUp },
+  { label: 'Cliques em Anúncios', value: '45.672', change: '-4.3%', trend: 'down', icon: MousePointer2 },
+  { label: 'Receita', value: 'R$ 84.200', change: '+18.2%', trend: 'up', icon: DollarSign },
 ];
 
 export default function Dashboard() {
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Welcome back, John</h1>
-          <p className="text-slate-500 text-sm mt-1">Here's what's happening with your funnels today.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Bem-vindo de volta, João</h1>
+          <p className="text-slate-500 text-sm mt-1">Aqui está o que está acontecendo com seus funis hoje.</p>
         </div>
         <div className="flex gap-3">
           <select className="bg-white border border-slate-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
-            <option>Last 7 days</option>
-            <option>Last 30 days</option>
-            <option>This month</option>
+            <option>Últimos 7 dias</option>
+            <option>Últimos 30 dias</option>
+            <option>Este mês</option>
           </select>
           <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors">
-            Export Report
+            Exportar Relatório
           </button>
         </div>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
           <div key={stat.label} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
@@ -97,11 +97,11 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-bold text-slate-900">Lead Generation Trend</h3>
+            <h3 className="font-bold text-slate-900">Tendência de Geração de Leads</h3>
             <div className="flex items-center gap-4 text-xs font-medium">
               <div className="flex items-center gap-1.5">
                 <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                <span className="text-slate-500">This Week</span>
+                <span className="text-slate-500">Esta Semana</span>
               </div>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function Dashboard() {
         </div>
 
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 className="font-bold text-slate-900 mb-6">Conversion Sources</h3>
+          <h3 className="font-bold text-slate-900 mb-6">Fontes de Conversão</h3>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={conversionData} layout="vertical">
@@ -188,26 +188,26 @@ export default function Dashboard() {
       {/* Recent Activity */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-          <h3 className="font-bold text-slate-900">Recent Leads</h3>
-          <button className="text-indigo-600 text-sm font-semibold hover:text-indigo-700">View all</button>
+          <h3 className="font-bold text-slate-900">Leads Recentes</h3>
+          <button className="text-indigo-600 text-sm font-semibold hover:text-indigo-700">Ver todos</button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50 text-slate-500 text-xs font-semibold uppercase tracking-wider">
-                <th className="px-6 py-4">Contact</th>
-                <th className="px-6 py-4">Source</th>
+                <th className="px-6 py-4">Contato</th>
+                <th className="px-6 py-4">Fonte</th>
                 <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4">Value</th>
-                <th className="px-6 py-4">Date</th>
+                <th className="px-6 py-4">Valor</th>
+                <th className="px-6 py-4">Data</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {[
-                { name: 'Sarah Jenkins', email: 'sarah@example.com', source: 'Facebook Ads', status: 'Hot', value: '$2,400', date: '2 mins ago' },
-                { name: 'Michael Chen', email: 'm.chen@company.com', source: 'Direct', status: 'Warm', value: '$1,200', date: '15 mins ago' },
-                { name: 'Emma Wilson', email: 'emma.w@gmail.com', source: 'Google Search', status: 'Cold', value: '$0', date: '1 hour ago' },
-                { name: 'David Miller', email: 'david@agency.io', source: 'Referral', status: 'Hot', value: '$5,000', date: '3 hours ago' },
+                { name: 'Sara Oliveira', email: 'sara@exemplo.com.br', source: 'Facebook Ads', status: 'Quente', value: 'R$ 2.400', date: '2 min atrás' },
+                { name: 'Miguel Santos', email: 'm.santos@empresa.com.br', source: 'Direto', status: 'Morno', value: 'R$ 1.200', date: '15 min atrás' },
+                { name: 'Emma Wilson', email: 'emma.w@gmail.com', source: 'Google Search', status: 'Frio', value: 'R$ 0', date: '1 hora atrás' },
+                { name: 'Davi Miller', email: 'davi@agencia.io', source: 'Indicação', status: 'Quente', value: 'R$ 5.000', date: '3 horas atrás' },
               ].map((lead, i) => (
                 <tr key={i} className="hover:bg-slate-50/50 transition-colors cursor-pointer">
                   <td className="px-6 py-4">
@@ -225,8 +225,8 @@ export default function Dashboard() {
                   <td className="px-6 py-4">
                     <span className={cn(
                       "px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider",
-                      lead.status === 'Hot' ? "bg-orange-100 text-orange-700" :
-                      lead.status === 'Warm' ? "bg-blue-100 text-blue-700" :
+                      lead.status === 'Quente' ? "bg-orange-100 text-orange-700" :
+                      lead.status === 'Morno' ? "bg-blue-100 text-blue-700" :
                       "bg-slate-100 text-slate-700"
                     )}>
                       {lead.status}

@@ -28,47 +28,47 @@ import { cn } from '@/src/lib/utils';
 
 const revenueData = [
   { name: 'Jan', revenue: 45000, expenses: 32000 },
-  { name: 'Feb', revenue: 52000, expenses: 34000 },
+  { name: 'Fev', revenue: 52000, expenses: 34000 },
   { name: 'Mar', revenue: 48000, expenses: 31000 },
-  { name: 'Apr', revenue: 61000, expenses: 38000 },
-  { name: 'May', revenue: 55000, expenses: 35000 },
+  { name: 'Abr', revenue: 61000, expenses: 38000 },
+  { name: 'Mai', revenue: 55000, expenses: 35000 },
   { name: 'Jun', revenue: 67000, expenses: 42000 },
   { name: 'Jul', revenue: 72000, expenses: 45000 },
 ];
 
 const segmentData = [
   { name: 'SaaS', value: 45, color: '#6366f1' },
-  { name: 'Services', value: 30, color: '#818cf8' },
-  { name: 'Courses', value: 15, color: '#a5b4fc' },
-  { name: 'Other', value: 10, color: '#c7d2fe' },
+  { name: 'Serviços', value: 30, color: '#818cf8' },
+  { name: 'Cursos', value: 15, color: '#a5b4fc' },
+  { name: 'Outros', value: 10, color: '#c7d2fe' },
 ];
 
 export default function Reporting() {
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Advanced Reporting</h1>
-          <p className="text-slate-500 text-sm mt-1">Deep dive into your business performance and metrics.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Relatórios Avançados</h1>
+          <p className="text-slate-500 text-sm mt-1">Mergulhe fundo no desempenho e métricas do seu negócio.</p>
         </div>
-        <div className="flex gap-3">
-          <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
+        <div className="flex flex-wrap gap-3">
+          <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 flex-1 md:flex-none">
             <Calendar className="w-4 h-4" />
-            Custom Range
+            Período Personalizado
           </button>
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
-            Download PDF
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex-1 md:flex-none">
+            Baixar PDF
           </button>
         </div>
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { label: 'Net Revenue', value: '$124,500', change: '+14.2%', trend: 'up', icon: DollarSign },
-          { label: 'Active Users', value: '8,432', change: '+8.1%', trend: 'up', icon: Users },
-          { label: 'Churn Rate', value: '2.4%', change: '-0.5%', trend: 'down', icon: Activity },
-          { label: 'Avg. LTV', value: '$1,240', change: '+12.5%', trend: 'up', icon: TrendingUp },
+          { label: 'Receita Líquida', value: 'R$ 124.500', change: '+14,2%', trend: 'up', icon: DollarSign },
+          { label: 'Usuários Ativos', value: '8.432', change: '+8,1%', trend: 'up', icon: Users },
+          { label: 'Taxa de Cancelamento', value: '2,4%', change: '-0,5%', trend: 'down', icon: Activity },
+          { label: 'LTV Médio', value: 'R$ 1.240', change: '+12,5%', trend: 'up', icon: TrendingUp },
         ].map((stat) => (
           <div key={stat.label} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex items-center justify-between mb-4">
@@ -90,24 +90,24 @@ export default function Reporting() {
       </div>
 
       {/* Main Revenue Chart */}
-      <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-        <div className="flex items-center justify-between mb-8">
+      <div className="bg-white p-4 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
-            <h3 className="font-bold text-slate-900 text-lg">Revenue vs Expenses</h3>
-            <p className="text-sm text-slate-500">Monthly financial overview for the current year.</p>
+            <h3 className="font-bold text-slate-900 text-lg">Receita vs Despesas</h3>
+            <p className="text-sm text-slate-500">Visão geral financeira mensal para o ano atual.</p>
           </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-indigo-500" />
-              <span className="text-xs font-bold text-slate-600">Revenue</span>
+              <span className="text-xs font-bold text-slate-600">Receita</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-slate-300" />
-              <span className="text-xs font-bold text-slate-600">Expenses</span>
+              <span className="text-xs font-bold text-slate-600">Despesas</span>
             </div>
           </div>
         </div>
-        <div className="h-[400px] w-full">
+        <div className="h-[300px] md:h-[400px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={revenueData}>
               <defs>
@@ -128,7 +128,7 @@ export default function Reporting() {
                 axisLine={false} 
                 tickLine={false} 
                 tick={{ fontSize: 12, fill: '#94a3b8' }}
-                tickFormatter={(value) => `$${value/1000}k`}
+                tickFormatter={(value) => `R$${value/1000}k`}
               />
               <Tooltip 
                 contentStyle={{ 
@@ -161,8 +161,8 @@ export default function Reporting() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Segment Breakdown */}
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 className="font-bold text-slate-900 text-lg mb-8">Revenue by Segment</h3>
+        <div className="bg-white p-4 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <h3 className="font-bold text-slate-900 text-lg mb-8">Receita por Segmento</h3>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="h-[250px] w-full md:w-1/2">
               <ResponsiveContainer width="100%" height="100%">
@@ -204,8 +204,8 @@ export default function Reporting() {
         </div>
 
         {/* User Growth */}
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 className="font-bold text-slate-900 text-lg mb-8">User Growth</h3>
+        <div className="bg-white p-4 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <h3 className="font-bold text-slate-900 text-lg mb-8">Crescimento de Usuários</h3>
           <div className="h-[250px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={revenueData}>

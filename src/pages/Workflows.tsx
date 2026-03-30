@@ -20,25 +20,25 @@ const initialNodes = [
     id: '1',
     type: 'trigger',
     position: { x: 250, y: 0 },
-    data: { label: 'Form Submitted', icon: Zap, color: 'bg-amber-500' },
+    data: { label: 'Formulário Enviado', icon: Zap, color: 'bg-amber-500' },
   },
   {
     id: '2',
     type: 'action',
     position: { x: 250, y: 150 },
-    data: { label: 'Add Contact Tag', icon: UserPlus, color: 'bg-blue-500' },
+    data: { label: 'Adicionar Tag ao Contato', icon: UserPlus, color: 'bg-blue-500' },
   },
   {
     id: '3',
     type: 'action',
     position: { x: 250, y: 300 },
-    data: { label: 'Send Welcome Email', icon: Mail, color: 'bg-indigo-500' },
+    data: { label: 'Enviar E-mail de Boas-vindas', icon: Mail, color: 'bg-indigo-500' },
   },
   {
     id: '4',
     type: 'action',
     position: { x: 250, y: 450 },
-    data: { label: 'Wait 2 Days', icon: Clock, color: 'bg-slate-500' },
+    data: { label: 'Aguardar 2 Dias', icon: Clock, color: 'bg-slate-500' },
   },
 ];
 
@@ -55,7 +55,7 @@ const CustomNode = ({ data }: any) => (
       <data.icon className="w-5 h-5" />
     </div>
     <div className="flex-1">
-      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Action</p>
+      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Ação</p>
       <p className="text-sm font-bold text-slate-900">{data.label}</p>
     </div>
     <Handle type="source" position={Position.Bottom} className="w-2 h-2 bg-slate-300" />
@@ -68,7 +68,7 @@ const TriggerNode = ({ data }: any) => (
       <data.icon className="w-5 h-5" />
     </div>
     <div className="flex-1">
-      <p className="text-xs font-bold text-amber-600 uppercase tracking-wider">Trigger</p>
+      <p className="text-xs font-bold text-amber-600 uppercase tracking-wider">Gatilho</p>
       <p className="text-sm font-bold text-slate-900">{data.label}</p>
     </div>
     <Handle type="source" position={Position.Bottom} className="w-2 h-2 bg-amber-500" />
@@ -91,24 +91,24 @@ export default function Workflows() {
 
   return (
     <div className="h-full flex flex-col space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Automation Workflows</h1>
-          <p className="text-slate-500 text-sm mt-1">Build complex customer journeys with ease.</p>
+          <h1 className="text-2xl font-bold text-slate-900">Fluxos de Automação</h1>
+          <p className="text-slate-500 text-sm mt-1">Crie jornadas complexas de clientes com facilidade.</p>
         </div>
         <div className="flex gap-3">
-          <button className="bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
+          <button className="flex-1 md:flex-none bg-white border border-slate-200 text-sm font-medium text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
             <Save className="w-4 h-4" />
-            Save Draft
+            Salvar Rascunho
           </button>
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
+          <button className="flex-1 md:flex-none bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center justify-center gap-2">
             <Play className="w-4 h-4" />
-            Publish Workflow
+            Publicar Fluxo
           </button>
         </div>
       </div>
 
-      <div className="flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative">
+      <div className="flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative min-h-[500px]">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -121,19 +121,19 @@ export default function Workflows() {
           <Background color="#f1f5f9" gap={20} />
           <Controls />
           <MiniMap />
-          <Panel position="top-right" className="bg-white p-2 rounded-lg border border-slate-200 shadow-lg flex flex-col gap-2">
-            <p className="text-[10px] font-bold text-slate-400 uppercase px-2">Add Step</p>
+          <Panel position="top-right" className="bg-white p-2 rounded-lg border border-slate-200 shadow-lg flex flex-col gap-2 max-w-[150px]">
+            <p className="text-[10px] font-bold text-slate-400 uppercase px-2">Adicionar Etapa</p>
             <button className="flex items-center gap-2 px-3 py-2 hover:bg-slate-50 rounded-md text-xs font-medium text-slate-700">
-              <Mail className="w-3 h-3 text-indigo-500" /> Send Email
+              <Mail className="w-3 h-3 text-indigo-500" /> Enviar E-mail
             </button>
             <button className="flex items-center gap-2 px-3 py-2 hover:bg-slate-50 rounded-md text-xs font-medium text-slate-700">
-              <MessageSquare className="w-3 h-3 text-emerald-500" /> Send SMS
+              <MessageSquare className="w-3 h-3 text-emerald-500" /> Enviar SMS
             </button>
             <button className="flex items-center gap-2 px-3 py-2 hover:bg-slate-50 rounded-md text-xs font-medium text-slate-700">
-              <Clock className="w-3 h-3 text-slate-500" /> Wait / Delay
+              <Clock className="w-3 h-3 text-slate-500" /> Aguardar / Atraso
             </button>
             <button className="flex items-center gap-2 px-3 py-2 hover:bg-slate-50 rounded-md text-xs font-medium text-slate-700">
-              <Plus className="w-3 h-3 text-indigo-600" /> More Actions
+              <Plus className="w-3 h-3 text-indigo-600" /> Mais Ações
             </button>
           </Panel>
         </ReactFlow>

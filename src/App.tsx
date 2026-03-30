@@ -18,7 +18,7 @@ import Memberships from './pages/Memberships';
 const Placeholder = ({ title }: { title: string }) => (
   <div className="flex flex-col items-center justify-center h-[60vh] text-slate-400">
     <h2 className="text-2xl font-bold text-slate-900 mb-2">{title}</h2>
-    <p>This module is currently under development.</p>
+    <p>Este módulo está atualmente em desenvolvimento.</p>
   </div>
 );
 
